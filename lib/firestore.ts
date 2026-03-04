@@ -7,8 +7,10 @@ import {
   getDocs,
   setDoc,
   updateDoc,
+  deleteDoc,
   query,
   where,
+  serverTimestamp,
   QueryConstraint,
 } from 'firebase/firestore'
 import { db } from './firebase'
@@ -42,6 +44,68 @@ export async function setUser(uid: string, user: Partial<User>): Promise<void> {
   }
 }
 
+// ── GET all progress for a user ──
+export async function getUserProgress(userId: string): Promise<Progress[]> {
+  if (!userId) return []
+  try {
+    const ref = collection(db, 'users', userId, 'progress')
+    const snapshot = await getDocs(ref)
+    return snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data(),
+    })) as Progress[]
+  } catch (error) {
+    console.error('Error getting progress:', error)
+    return []
+  }
+}
+
+// ── SAVE or UPDATE progress for a user ──
+export async function saveUserProgress(
+  userId: string,
+  data: {
+    lessonId: string
+    subjectId: string
+    status: 'completed' | 'in_progress'
+    score: number
+    totalQuestions: number
+    completedAt?: Date
+  }
+): Promise<void> {
+  if (!userId) return
+  try {
+    // Use lessonId as document ID so it overwrites
+    // previous attempts for the same lesson
+    const ref = doc(db, 'users', userId, 'progress', data.lessonId)
+    await setDoc(ref, {
+      ...data,
+      userId,
+      completedAt: data.completedAt
+        ? data.completedAt : serverTimestamp(),
+      updatedAt: serverTimestamp(),
+    }, { merge: true })
+  } catch (error) {
+    console.error('Error saving progress:', error)
+    throw error
+  }
+}
+
+// ── DELETE all progress for a user (for reset) ──
+export async function clearUserProgress(userId: string): Promise<void> {
+  if (!userId) return
+  try {
+    const ref = collection(db, 'users', userId, 'progress')
+    const snapshot = await getDocs(ref)
+    const deletePromises = snapshot.docs.map(d =>
+      import('firebase/firestore').then(({ deleteDoc }) =>
+        deleteDoc(d.ref)
+      )
+    )
+    await Promise.all(deletePromises)
+  } catch (error) {
+    console.error('Error clearing progress:', error)
+  }
+}
 // Children
 export async function getChildrenForParent(parentId: string): Promise<Child[]> {
   try {
@@ -115,75 +179,7 @@ export async function getLesson(lessonId: string): Promise<Lesson | null> {
   }
 }
 
-// Progress
-export async function getProgress(childId: string, lessonId: string): Promise<Progress | null> {
-  try {
-    const q = query(
-      collection(db, 'progress'),
-      where('childId', '==', childId),
-      where('lessonId', '==', lessonId)
-    )
-    const querySnapshot = await getDocs(q)
-    return querySnapshot.docs.length > 0
-      ? ({ id: querySnapshot.docs[0].id, ...querySnapshot.docs[0].data() } as Progress)
-      : null
-  } catch (error) {
-    console.error('getProgress error:', error)
-    return null
-  }
-}
-
-export async function getProgressForChild(childId: string): Promise<Progress[]> {
-  try {
-    const q = query(collection(db, 'progress'), where('childId', '==', childId))
-    const querySnapshot = await getDocs(q)
-    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Progress))
-  } catch (error) {
-    console.error('getProgressForChild error:', error)
-    return []
-  }
-}
-
-export async function getProgressForSubject(childId: string, subjectId: string): Promise<Progress[]> {
-  try {
-    const q = query(
-      collection(db, 'progress'),
-      where('childId', '==', childId),
-      where('subjectId', '==', subjectId)
-    )
-    const querySnapshot = await getDocs(q)
-    return querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Progress))
-  } catch (error) {
-    console.error('getProgressForSubject error:', error)
-    return []
-  }
-}
-
-export async function saveProgress(progress: Partial<Progress>): Promise<string> {
-  try {
-    const docRef = doc(collection(db, 'progress'))
-    await setDoc(docRef, {
-      ...progress,
-      lastAttemptAt: new Date(),
-    })
-    return docRef.id
-  } catch (error) {
-    console.error('saveProgress error:', error)
-    throw error
-  }
-}
-
-export async function updateProgress(progressId: string, updates: Partial<Progress>): Promise<void> {
-  try {
-    await updateDoc(doc(db, 'progress', progressId), {
-      ...updates,
-      lastAttemptAt: new Date(),
-    })
-  } catch (error) {
-    console.error('updateProgress error:', error)
-    throw error
-  }
-}
+// ...existing code...
 
 // Badges
 export async function getBadges(): Promise<Badge[]> {

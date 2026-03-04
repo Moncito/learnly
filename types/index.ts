@@ -58,15 +58,14 @@ export interface Lesson {
 // Progress & Badges
 export interface Progress {
   id: string
-  childId: string
   lessonId: string
   subjectId: string
-  status: 'not-started' | 'in-progress' | 'completed'
+  status: 'completed' | 'in_progress' | 'not-started'
   score: number
   totalQuestions: number
-  attempts: number
-  lastAttemptAt: Date
-  completedAt?: Date
+  completedAt?: Date | any
+  updatedAt?: Date | any
+  userId: string
 }
 
 export interface Badge {

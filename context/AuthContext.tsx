@@ -4,6 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { User as FirebaseUser, onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/lib/firebase'
 import { getUser, setUser } from '@/lib/firestore'
+import { ensureUserDocument } from '@/lib/auth'
 import { User } from '@/types'
 
 interface AuthContextType {
@@ -23,6 +24,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
       if (authUser) {
+        await ensureUserDocument(authUser)
         setFirebaseUser(authUser)
         try {
           const userData = await getUser(authUser.uid)

@@ -1,79 +1,95 @@
-'use client'
-
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
-  GoogleAuthProvider,
   signInWithPopup,
-  User as FirebaseUser,
+  GoogleAuthProvider,
+  updateProfile,
 } from 'firebase/auth'
-import { auth } from './firebase'
-import { setUser } from './firestore'
+import {
+  doc,
+  setDoc,
+  getDoc,
+  serverTimestamp,
+} from 'firebase/firestore'
+import { auth, db } from '@/lib/firebase'
 
 const googleProvider = new GoogleAuthProvider()
 
+// ── ENSURE USER DOCUMENT EXISTS IN FIRESTORE ──────────────
+// Called after every login/signup to guarantee the user
+// document exists so progress subcollection can be written
+export async function ensureUserDocument(firebaseUser: {
+  uid: string
+  email: string | null
+  displayName: string | null
+}) {
+  try {
+    const ref = doc(db, 'users', firebaseUser.uid)
+    const snap = await getDoc(ref)
+
+    if (!snap.exists()) {
+      await setDoc(ref, {
+        uid: firebaseUser.uid,
+        email: firebaseUser.email ?? '',
+        displayName:
+          firebaseUser.displayName ??
+          firebaseUser.email?.split('@')[0] ??
+          'Explorer',
+        createdAt: serverTimestamp(),
+        role: 'parent',
+      })
+    }
+  } catch (error) {
+    console.error('Error ensuring user document:', error)
+  }
+}
+
+// ── SIGN UP WITH EMAIL ─────────────────────────────────────
 export async function signUpWithEmail(
   email: string,
   password: string,
-  displayName: string
-): Promise<FirebaseUser> {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-    const user = userCredential.user
+  displayName?: string
+) {
+  const result = await createUserWithEmailAndPassword(auth, email, password)
 
-    // Store user data in Firestore
-    await setUser(user.uid, {
-      uid: user.uid,
-      email,
-      displayName,
-      role: 'parent',
-      createdAt: new Date(),
-    })
-
-    return user
-  } catch (error) {
-    console.error('signUpWithEmail error:', error)
-    throw error
+  // Set displayName on Firebase Auth profile if provided
+  if (displayName) {
+    await updateProfile(result.user, { displayName })
   }
+
+  // Create Firestore user document
+  await ensureUserDocument({
+    uid: result.user.uid,
+    email: result.user.email,
+    displayName: displayName ?? result.user.displayName,
+  })
+
+  return result
 }
 
-export async function signInWithEmail(email: string, password: string): Promise<FirebaseUser> {
-  try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password)
-    return userCredential.user
-  } catch (error) {
-    console.error('signInWithEmail error:', error)
-    throw error
-  }
+// ── SIGN IN WITH EMAIL ─────────────────────────────────────
+export async function signInWithEmail(email: string, password: string) {
+  const result = await signInWithEmailAndPassword(auth, email, password)
+
+  // Ensure Firestore document exists (for existing users
+  // who signed up before this fix was applied)
+  await ensureUserDocument(result.user)
+
+  return result
 }
 
-export async function signInWithGoogle(): Promise<FirebaseUser> {
-  try {
-    const result = await signInWithPopup(auth, googleProvider)
-    const user = result.user
+// ── SIGN IN WITH GOOGLE ────────────────────────────────────
+export async function signInWithGoogle() {
+  const result = await signInWithPopup(auth, googleProvider)
 
-    // Create user record if new
-    await setUser(user.uid, {
-      uid: user.uid,
-      email: user.email || '',
-      displayName: user.displayName || 'Google User',
-      role: 'parent',
-      createdAt: new Date(),
-    })
+  // Ensure Firestore document exists
+  await ensureUserDocument(result.user)
 
-    return user
-  } catch (error) {
-    console.error('signInWithGoogle error:', error)
-    throw error
-  }
+  return result
 }
 
-export async function signOut(): Promise<void> {
-  try {
-    await firebaseSignOut(auth)
-  } catch (error) {
-    console.error('signOut error:', error)
-    throw error
-  }
+// ── SIGN OUT ───────────────────────────────────────────────
+export async function signOut() {
+  await firebaseSignOut(auth)
 }

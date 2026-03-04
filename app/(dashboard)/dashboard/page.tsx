@@ -11,7 +11,7 @@ import { SUBJECTS, LESSONS } from '@/constants/subjects'
 export default function DashboardPage() {
   const { isAuthenticated, isLoading, user } = useAuth()
   const router = useRouter()
-  const { progress } = useProgress(null)
+  const { progress } = useProgress(null, user?.uid ?? undefined)
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {

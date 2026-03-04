@@ -12,7 +12,7 @@ import { SUBJECTS } from '@/constants/subjects'
 export default function ProgressPage() {
   const { isAuthenticated, isLoading, user } = useAuth()
   const router = useRouter()
-  const { progress } = useProgress(null)
+  const { progress } = useProgress(null, user?.uid ?? undefined)
   // ...existing code...
   useSubjects(); // keep hook call for side effects if any, but do not destructure unused 'subjects'
 

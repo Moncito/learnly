@@ -14,11 +14,11 @@ interface LessonPageProps {
 
 export default function LessonsPage({ params }: LessonPageProps) {
   const { subjectId } = use(params)
-  const { isAuthenticated, isLoading } = useAuth()
+  const { isAuthenticated, isLoading, user } = useAuth()
   const router = useRouter()
   const subject = useSubject(subjectId)
   const { lessons } = useLessonsForSubject(subjectId)
-  const { progress } = useProgress(null)
+  const { progress } = useProgress(null, user?.uid ?? undefined)
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -54,6 +54,25 @@ export default function LessonsPage({ params }: LessonPageProps) {
     subjectId === 'math' ? '#FFF0F0'
       : subjectId === 'english' ? '#F0F5FF'
         : '#F0FFF4'
+
+  // Debug logs for progress and lessons
+  console.log('Progress records:', progress)
+  console.log('Lessons:', lessons.map(l => ({ id: l.id, order: l.order })))
+
+  // Robust unlock logic
+  const isLessonUnlocked = (lesson) => {
+    if (lesson.order === 1) return true
+    const previousLesson = lessons.find((l) => l.order === lesson.order - 1)
+    if (!previousLesson) return true
+    const previousProgress = progress.find((p) => p.lessonId === previousLesson.id)
+    console.log(
+      `Checking unlock for lesson ${lesson.id}:`,
+      'Previous lesson:', previousLesson.id,
+      'Previous progress:', previousProgress,
+      'Status:', previousProgress?.status
+    )
+    return previousProgress?.status === 'completed'
+  }
 
   return (
     <div style={{
@@ -270,15 +289,12 @@ export default function LessonsPage({ params }: LessonPageProps) {
 
         {/* Lessons grid */}
         <div className="lessons-grid">
-          {lessons.map((lesson, index) => {
+          {lessons.map((lesson) => {
             const isCompleted = progress.some(
               (p) => p.lessonId === lesson.id && p.status === 'completed'
             )
-            const isLocked = index > 0 && !progress.some(
-              (p) => p.lessonId === lessons[index - 1].id && p.status === 'completed'
-            )
-
-            if (!isLocked) {
+            const isUnlocked = isLessonUnlocked(lesson)
+            if (isUnlocked) {
               return (
                 <div
                   key={lesson.id}
@@ -351,7 +367,6 @@ export default function LessonsPage({ params }: LessonPageProps) {
                 </div>
               )
             }
-
             // Locked card
             return (
               <div key={lesson.id} className="lesson-card-locked">
