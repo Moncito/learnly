@@ -43,7 +43,7 @@ export function Navbar() {
         }}
       >
         {/* ── LOGO ── */}
-        <Link href="/" style={{ textDecoration: 'none' }}>
+        <Link href={isAuthenticated ? '/dashboard' : '/'} style={{ textDecoration: 'none' }}>
           <span style={{
             fontFamily: "'Fredoka One', cursive",
             fontSize: '2rem',

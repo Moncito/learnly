@@ -1,18 +1,31 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@/context/AuthContext'
 
 
 import BackgroundBlobs from '@/components/ui/BackgroundBlobs'
-import { Navbar }      from '@/components/ui/Navbar'
-import AuthModal       from '@/components/ui/Authmodal'
-import Footer          from '@/components/ui/Footer'
-import Hero            from '@/components/home/Hero'
-import HowItWorks      from '@/components/home/HowItWorks'
-import Subjects        from '@/components/home/Subjects'
-import CtaBand         from '@/components/home/CtaBand'
+import { Navbar } from '@/components/ui/Navbar'
+import AuthModal from '@/components/ui/Authmodal'
+import Footer from '@/components/ui/Footer'
+import Hero from '@/components/home/Hero'
+import HowItWorks from '@/components/home/HowItWorks'
+import Subjects from '@/components/home/Subjects'
+import CtaBand from '@/components/home/CtaBand'
 
 export default function HomePage() {
+  const { isAuthenticated, isLoading } = useAuth()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) {
+      router.push('/dashboard')
+    }
+  }, [isAuthenticated, isLoading, router])
+
+  if (isLoading || isAuthenticated) return null
+
   const [modalOpen, setModalOpen] = useState(false)
   const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login')
 
