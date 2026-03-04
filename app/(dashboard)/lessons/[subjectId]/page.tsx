@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { useAuth } from '@/context/AuthContext'
 import { Navbar } from '@/components/ui/Navbar'
@@ -10,17 +10,12 @@ import { ProgressBar } from '@/components/ui/ProgressBar'
 import { useSubject, useLessonsForSubject } from '@/hooks/useLessons'
 import { useProgress, getSubjectCompletion } from '@/hooks/useProgress'
 
-interface LessonPageProps {
-  params: {
-    subjectId: string
-  }
-}
-
-export default function LessonsPage({ params }: LessonPageProps) {
+export default function LessonsPage() {
   const { isAuthenticated, isLoading } = useAuth()
   const router = useRouter()
-  const subject = useSubject(params.subjectId)
-  const { lessons } = useLessonsForSubject(params.subjectId)
+  const { subjectId } = useParams<{ subjectId: string }>()
+  const subject = useSubject(subjectId)
+  const { lessons } = useLessonsForSubject(subjectId)
   const { progress } = useProgress(null)
 
   useEffect(() => {
@@ -39,7 +34,7 @@ export default function LessonsPage({ params }: LessonPageProps) {
     )
   }
 
-  const subjectProgress = getSubjectCompletion(progress, params.subjectId)
+  const subjectProgress = getSubjectCompletion(progress, subjectId)
   const completionPercentage = lessons.length > 0 ? (subjectProgress / lessons.length) * 100 : 0
 
   const containerVariants = {
