@@ -16,16 +16,25 @@ import { auth, db } from '@/lib/firebase'
 
 const googleProvider = new GoogleAuthProvider()
 
+// Helper guards
+function getAuth() {
+  if (!auth) throw new Error('Firebase Auth not initialized')
+  return auth
+}
+
+function getDb() {
+  if (!db) throw new Error('Firestore not initialized')
+  return db
+}
+
 // ── ENSURE USER DOCUMENT EXISTS IN FIRESTORE ──────────────
-// Called after every login/signup to guarantee the user
-// document exists so progress subcollection can be written
 export async function ensureUserDocument(firebaseUser: {
   uid: string
   email: string | null
   displayName: string | null
 }) {
   try {
-    const ref = doc(db, 'users', firebaseUser.uid)
+    const ref = doc(getDb(), 'users', firebaseUser.uid)
     const snap = await getDoc(ref)
 
     if (!snap.exists()) {
@@ -51,14 +60,16 @@ export async function signUpWithEmail(
   password: string,
   displayName?: string
 ) {
-  const result = await createUserWithEmailAndPassword(auth, email, password)
+  const result = await createUserWithEmailAndPassword(
+    getAuth(),
+    email,
+    password
+  )
 
-  // Set displayName on Firebase Auth profile if provided
   if (displayName) {
     await updateProfile(result.user, { displayName })
   }
 
-  // Create Firestore user document
   await ensureUserDocument({
     uid: result.user.uid,
     email: result.user.email,
@@ -70,10 +81,12 @@ export async function signUpWithEmail(
 
 // ── SIGN IN WITH EMAIL ─────────────────────────────────────
 export async function signInWithEmail(email: string, password: string) {
-  const result = await signInWithEmailAndPassword(auth, email, password)
+  const result = await signInWithEmailAndPassword(
+    getAuth(),
+    email,
+    password
+  )
 
-  // Ensure Firestore document exists (for existing users
-  // who signed up before this fix was applied)
   await ensureUserDocument(result.user)
 
   return result
@@ -81,9 +94,8 @@ export async function signInWithEmail(email: string, password: string) {
 
 // ── SIGN IN WITH GOOGLE ────────────────────────────────────
 export async function signInWithGoogle() {
-  const result = await signInWithPopup(auth, googleProvider)
+  const result = await signInWithPopup(getAuth(), googleProvider)
 
-  // Ensure Firestore document exists
   await ensureUserDocument(result.user)
 
   return result
@@ -91,5 +103,5 @@ export async function signInWithGoogle() {
 
 // ── SIGN OUT ───────────────────────────────────────────────
 export async function signOut() {
-  await firebaseSignOut(auth)
+  await firebaseSignOut(getAuth())
 }

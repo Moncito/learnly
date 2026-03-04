@@ -1,9 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Card } from '@/components/ui/Card'
-import { Button } from '@/components/ui/Button'
+import React from 'react'
 import { QuizItem } from '@/types'
 
 interface QuizQuestionProps {

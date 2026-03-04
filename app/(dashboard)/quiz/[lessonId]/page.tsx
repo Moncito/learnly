@@ -66,9 +66,6 @@ export default function QuizPage({ params }: QuizPageProps) {
   const questions = lesson.content.items
   const currentQuestion = questions[currentQuestionIndex]
   const totalQuestions = questions.length
-  const score = answers.filter(
-    (answer, index) => answer === questions[index].answer
-  ).length
 
   const subjectColor =
     lesson.subjectId === 'math' ? '#FF6B6B'

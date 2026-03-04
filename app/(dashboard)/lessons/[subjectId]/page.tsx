@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useAuth } from '@/context/AuthContext'
 import { Navbar } from '@/components/ui/Navbar'
 import { useSubject, useLessonsForSubject } from '@/hooks/useLessons'
+import { Lesson } from '@/types'
 import { useProgress, getSubjectCompletion } from '@/hooks/useProgress'
 
 interface LessonPageProps {
@@ -60,7 +61,7 @@ export default function LessonsPage({ params }: LessonPageProps) {
   console.log('Lessons:', lessons.map(l => ({ id: l.id, order: l.order })))
 
   // Robust unlock logic
-  const isLessonUnlocked = (lesson) => {
+  const isLessonUnlocked = (lesson: Lesson) => {
     if (lesson.order === 1) return true
     const previousLesson = lessons.find((l) => l.order === lesson.order - 1)
     if (!previousLesson) return true

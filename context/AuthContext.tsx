@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { User as FirebaseUser, onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/lib/firebase'
-import { getUser, setUser } from '@/lib/firestore'
+import { getUser } from '@/lib/firestore'
 import { ensureUserDocument } from '@/lib/auth'
 import { User } from '@/types'
 
@@ -18,23 +18,30 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [firebaseUser, setFirebaseUser] = useState<FirebaseUser | null>(null)
-  const [user, setUser_] = useState<User | null>(null)
+  const [user, setUserData] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    // Guard — auth may be null if Firebase not initialized
+    if (!auth) {
+      Promise.resolve().then(() => setIsLoading(false))
+      return
+    }
+
     const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
       if (authUser) {
         await ensureUserDocument(authUser)
         setFirebaseUser(authUser)
         try {
           const userData = await getUser(authUser.uid)
-          setUser_(userData)
+          setUserData(userData)
         } catch (error) {
           console.error('Error fetching user:', error)
+          setUserData(null)
         }
       } else {
         setFirebaseUser(null)
-        setUser_(null)
+        setUserData(null)
       }
       setIsLoading(false)
     })
@@ -61,5 +68,11 @@ export function useAuth() {
   if (!context) {
     throw new Error('useAuth must be used within an AuthProvider')
   }
-  return context
+
+  // Return both firebaseUser as `user` for convenience
+  // so pages can do const { user } = useAuth() and get uid
+  return {
+    ...context,
+    user: context.firebaseUser,
+  }
 }

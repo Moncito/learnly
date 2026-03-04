@@ -1,6 +1,6 @@
-import { initializeApp, getApps } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
+import { initializeApp, getApps, FirebaseApp } from 'firebase/app'
+import { getAuth, Auth } from 'firebase/auth'
+import { getFirestore, Firestore } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || '',
@@ -11,10 +11,9 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || '',
 }
 
-// Only initialize Firebase if we have config values
-let app: any = null
-let auth: any = null
-let db: any = null
+let app: FirebaseApp | null = null
+let auth: Auth | null = null
+let db: Firestore | null = null
 
 if (firebaseConfig.projectId) {
   app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig)

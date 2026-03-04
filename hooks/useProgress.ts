@@ -23,6 +23,7 @@ export function useProgress(
 
   useEffect(() => {
     if (!userId) return
+    if (!db) return   // db null — stay in loading state, no setState
 
     const ref = collection(db, 'users', userId, 'progress')
     const unsubscribe = onSnapshot(
@@ -55,6 +56,10 @@ export function useProgress(
       console.error('Cannot save — no userId provided')
       return
     }
+    if (!db) {
+      console.error('Firestore not initialized')
+      return
+    }
     try {
       const ref = doc(db, 'users', userId, 'progress', data.lessonId)
       await setDoc(
@@ -67,7 +72,6 @@ export function useProgress(
         },
         { merge: true }
       )
-      // onSnapshot updates progress automatically
     } catch (error) {
       console.error('Error saving progress:', error)
       throw error

@@ -63,8 +63,8 @@ export interface Progress {
   status: 'completed' | 'in_progress' | 'not-started'
   score: number
   totalQuestions: number
-  completedAt?: Date | any
-  updatedAt?: Date | any
+  completedAt?: Date | { toDate: () => Date } | null
+  updatedAt?: Date | { toDate: () => Date } | null
   userId: string
 }
 
