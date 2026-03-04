@@ -50,7 +50,8 @@ export default function DashboardPage() {
   const displayName = user?.displayName?.trim() || user?.email?.split('@')[0] || 'Explorer';
   const lessonsStarted = progress.length;
   const lessonsCompleted = progress.filter((p) => p.status === 'completed').length;
-  const completionPercentage = lessonsStarted > 0 ? Math.round((lessonsCompleted / lessonsStarted) * 100) : 0;
+  const totalActiveLessons = LESSONS.filter(l => l.isActive).length;
+  const completionPercentage = totalActiveLessons > 0 ? Math.round((lessonsCompleted / totalActiveLessons) * 100) : 0;
   const overallProgress = completionPercentage;
   const subjectStats = SUBJECTS.map((subject) => {
     const totalLessons = LESSONS.filter(
