@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { Subject } from '@/types'
 
@@ -10,9 +9,17 @@ interface SubjectCardProps {
   subject: Subject
   onSelect?: (subjectId: string) => void
   href?: string
+  totalLessons?: number
+  completedLessons?: number
 }
 
-export function SubjectCard({ subject, onSelect, href }: SubjectCardProps) {
+export function SubjectCard({
+  subject,
+  onSelect,
+  href,
+  totalLessons = 0,
+  completedLessons = 0,
+}: SubjectCardProps) {
   // Define background colors for each subject
   const bgColors: { [key: string]: string } = {
     math: '#FFF0F0',    // Light red
@@ -21,6 +28,10 @@ export function SubjectCard({ subject, onSelect, href }: SubjectCardProps) {
   }
 
   const bgColor = bgColors[subject.id] || '#FFFFFF'
+  const safeTotal = Math.max(totalLessons, 0)
+  const safeCompleted = Math.min(Math.max(completedLessons, 0), safeTotal || completedLessons)
+  const completion =
+    safeTotal > 0 ? Math.round((safeCompleted / safeTotal) * 100) : 0
 
   const content = (
     <div
@@ -61,6 +72,29 @@ export function SubjectCard({ subject, onSelect, href }: SubjectCardProps) {
         >
           {subject.description}
         </p>
+      </div>
+
+      {/* Progress chip + mini bar */}
+      <div className="mt-4">
+        <div className="flex items-center justify-between text-xs sm:text-sm font-semibold text-[#2D2D2D] mb-1">
+          <span>
+            ⭐ {safeCompleted}/{safeTotal || '?'} lessons
+          </span>
+          <span>{completion}%</span>
+        </div>
+        <div
+          className="w-full h-2 rounded-full"
+          style={{ background: 'rgba(0,0,0,0.06)' }}
+        >
+          <div
+            className="h-2 rounded-full"
+            style={{
+              width: `${completion}%`,
+              background: subject.color,
+              transition: 'width 0.3s ease',
+            }}
+          />
+        </div>
       </div>
 
       <Button
