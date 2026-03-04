@@ -10,7 +10,7 @@ export default function Footer() {
     }}>
       Made with{' '}
       <span style={{ color: '#FF6B6B' }}>♥</span>
-      {' '}for little learners everywhere · © 2025 Learnly
+      {' '}for little learners everywhere · © 2026 Learnly
     </footer>
   )
 }

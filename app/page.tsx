@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/context/AuthContext'
 
-
 import BackgroundBlobs from '@/components/ui/BackgroundBlobs'
 import { Navbar } from '@/components/ui/Navbar'
 import AuthModal from '@/components/ui/Authmodal'
@@ -18,16 +17,18 @@ export default function HomePage() {
   const { isAuthenticated, isLoading } = useAuth()
   const router = useRouter()
 
+  // ── ALL hooks must be before any early return ──
+  const [modalOpen, setModalOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login')
+
   useEffect(() => {
     if (!isLoading && isAuthenticated) {
       router.push('/dashboard')
     }
   }, [isAuthenticated, isLoading, router])
 
+  // ── Early returns AFTER all hooks ──
   if (isLoading || isAuthenticated) return null
-
-  const [modalOpen, setModalOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login')
 
   const openModal = (tab: 'login' | 'signup') => {
     setActiveTab(tab)
@@ -41,23 +42,15 @@ export default function HomePage() {
     }}>
 
       <BackgroundBlobs />
-
-      {/* Navbar handles its own auth links internally via useAuth */}
       <Navbar />
 
-      <Hero
-        onGetStarted={() => openModal('signup')}
-        onLogin={() => openModal('login')}
-      />
+      <Hero />
 
       <HowItWorks />
-
       <Subjects />
 
-      <CtaBand
-        onGetStarted={() => openModal('signup')}
-        onLogin={() => openModal('login')}
-      />
+      {/* CtaBand now handles its own routing internally */}
+      <CtaBand />
 
       <Footer />
 

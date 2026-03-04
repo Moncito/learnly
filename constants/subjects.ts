@@ -244,14 +244,14 @@ export const LESSONS: Lesson[] = [
         {
           id: '1',
           question: '🔴 🔵 🔴 🔵 🔴 — What comes next?',
-          options: ['�', '🔴', '�', '🟡'],
+          options: ['🟩', '🔴', '🔵', '🟡'],
           answer: 2,
           imageUrl: '🔴🔵🔴🔵🔴',
         },
         {
           id: '2',
           question: '🟩 🟡 🟩 🟡 🟩 — What comes next?',
-          options: ['�', '�', '�', '🔵'],
+          options: ['🌙', '🟩', '🟡', '🔵'],
           answer: 2,
           imageUrl: '🟩🟡🟩🟡🟩',
         },
@@ -265,14 +265,14 @@ export const LESSONS: Lesson[] = [
         {
           id: '4',
           question: '🍎 🍊 🍎 🍊 🍎 — What comes next?',
-          options: ['�', '�', '�', '�'],
+          options: ['🍎', '🍊', '🍌', '🍇'],
           answer: 1,
           imageUrl: '🍎🍊🍎🍊🍎',
         },
         {
           id: '5',
           question: '🐶 🐱 🐶 🐱 🐶 — What comes next?',
-          options: ['�', '�', '�', '🐹'],
+          options: ['🍎', '🐶', '🐱', '🐹'],
           answer: 2,
           imageUrl: '🐶🐱🐶🐱🐶',
         },
