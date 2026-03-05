@@ -3,7 +3,7 @@
 :root {
   --font-lexend:  'Lexend', system-ui, sans-serif;
   --font-fredoka: 'Fredoka One', cursive;
-  --font-nunito:  var(--font-nunito-loaded, 'Nunito', system-ui, sans-serif);
+  --font-nunito:  'Nunito', system-ui, sans-serif;
 }
 
 :root {
