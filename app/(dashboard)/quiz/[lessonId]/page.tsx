@@ -139,7 +139,6 @@ export default function QuizPage({ params }: QuizPageProps) {
     return (
       <>
         <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap');
           html, body { background: #FFFBF0 !important; margin: 0; padding: 0; }
           @keyframes popIn {
             0%   { transform: scale(0.8); opacity: 0; }
@@ -155,7 +154,7 @@ export default function QuizPage({ params }: QuizPageProps) {
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', justifyContent: 'center',
           padding: '2rem 1.5rem',
-          fontFamily: "'Nunito', sans-serif",
+          fontFamily: "'Lexend', system-ui, sans-serif",
           position: 'relative', overflow: 'hidden',
         }}>
           {/* Blobs */}
@@ -285,7 +284,7 @@ export default function QuizPage({ params }: QuizPageProps) {
               <button
                 onClick={handleTryAgain}
                 style={{
-                  fontFamily: "'Nunito', sans-serif",
+                  fontFamily: "'Lexend', system-ui, sans-serif",
                   fontWeight: 900, fontSize: '1.1rem',
                   background: '#FF6B6B', color: '#FFFFFF',
                   border: '2.5px solid #2D2D2D', borderRadius: 9999,
@@ -308,7 +307,7 @@ export default function QuizPage({ params }: QuizPageProps) {
               <button
                 onClick={() => router.push(`/lessons/${lesson?.subjectId}`)}
                 style={{
-                  fontFamily: "'Nunito', sans-serif",
+                  fontFamily: "'Lexend', system-ui, sans-serif",
                   fontWeight: 900, fontSize: '1.1rem',
                   background: '#FFD93D', color: '#2D2D2D',
                   border: '2.5px solid #2D2D2D', borderRadius: 9999,
@@ -341,13 +340,12 @@ export default function QuizPage({ params }: QuizPageProps) {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap');
         html, body {
           background: #FFFBF0 !important;
           margin: 0; padding: 0; overflow-x: hidden;
         }
         .answer-btn {
-          font-family: 'Nunito', sans-serif;
+          font-family: 'Lexend', system-ui, sans-serif;
           font-weight: 900;
           font-size: clamp(1rem, 2.5vw, 1.15rem);
           background: #FFFFFF;
@@ -392,7 +390,7 @@ export default function QuizPage({ params }: QuizPageProps) {
           box-shadow: 4px 4px 0 #2D2D2D;
         }
         .next-btn {
-          font-family: 'Nunito', sans-serif;
+          font-family: 'Lexend', system-ui, sans-serif;
           font-weight: 900;
           font-size: 1.15rem;
           background: #FFD93D;
@@ -430,7 +428,7 @@ export default function QuizPage({ params }: QuizPageProps) {
       <div style={{
         width: '100%', minHeight: '100vh',
         background: '#FFFBF0', overflowX: 'hidden',
-        fontFamily: "'Nunito', sans-serif",
+        fontFamily: "'Lexend', system-ui, sans-serif",
         position: 'relative',
         display: 'flex', flexDirection: 'column',
       }}>
@@ -468,7 +466,7 @@ export default function QuizPage({ params }: QuizPageProps) {
               <button
                 onClick={() => router.back()}
                 style={{
-                  fontFamily: "'Nunito', sans-serif",
+                  fontFamily: "'Lexend', system-ui, sans-serif",
                   fontWeight: 800, fontSize: '0.9rem',
                   background: '#FFFFFF', color: '#2D2D2D',
                   border: '2px solid #2D2D2D', borderRadius: 9999,

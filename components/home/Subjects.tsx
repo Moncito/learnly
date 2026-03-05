@@ -30,6 +30,7 @@ export default function Subjects() {
           <div key={s.tag} style={{
             background: s.bg,
             border: '2.5px solid #2D2D2D',
+            borderTop: `5px solid ${s.color}`,
             borderRadius: 28,
             boxShadow: '5px 5px 0 #2D2D2D',
             padding: '2rem',
@@ -45,15 +46,24 @@ export default function Subjects() {
               ;(e.currentTarget as HTMLElement).style.boxShadow = '5px 5px 0 #2D2D2D'
             }}
           >
-            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{s.emoji}</div>
+            {/* Emoji icon with coloured background */}
+            <div style={{
+              width: 72, height: 72, borderRadius: 20,
+              background: '#FFFFFF', border: `2.5px solid ${s.color}`,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: '2.5rem', marginBottom: '1.25rem',
+              boxShadow: `3px 3px 0 ${s.color}`,
+            }}>
+              {s.emoji}
+            </div>
 
             <div style={{
               display: 'inline-block',
               fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 900,
-              fontSize: '0.75rem', textTransform: 'uppercase',
-              letterSpacing: 2, padding: '0.2rem 0.8rem',
-              borderRadius: 9999, border: `2px solid ${s.color}`,
-              color: s.color, marginBottom: '0.75rem',
+              fontSize: '0.75rem', textTransform: 'uppercase' as const,
+              letterSpacing: 2, padding: '0.25rem 0.9rem',
+              borderRadius: 9999, background: s.color,
+              color: '#FFFFFF', marginBottom: '0.75rem',
             }}>
               {s.tag}
             </div>
@@ -78,8 +88,8 @@ export default function Subjects() {
                 <span key={pill} style={{
                   fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 700,
                   fontSize: '0.85rem', background: '#FFFFFF',
-                  border: '2px solid #2D2D2D', borderRadius: 9999,
-                  padding: '0.2rem 0.75rem', color: '#2D2D2D',
+                  border: `1.5px solid ${s.color}`, borderRadius: 9999,
+                  padding: '0.2rem 0.75rem', color: s.color,
                 }}>
                   {pill}
                 </span>

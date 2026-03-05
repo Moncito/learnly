@@ -1,5 +1,5 @@
-import type { Metadata } from 'next'
-import { Lexend, Fredoka } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { Lexend, Fredoka, Nunito } from 'next/font/google'
 import './globals.css'
 import { AuthProvider } from '@/context/AuthContext'
 
@@ -17,10 +17,22 @@ const fredoka = Fredoka({
   display: 'swap',
 })
 
+const nunito = Nunito({
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '800', '900'],
+  variable: '--font-nunito',
+  display: 'swap',
+})
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+}
+
 export const metadata: Metadata = {
   title: 'Learnly - Preschool Learning App',
   description: 'Learn to Live, Live to Learn · Where curiosity meets adventure',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
 }
 
 export default function RootLayout({
@@ -29,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${lexend.variable} ${fredoka.variable}`}>
+    <html lang="en" className={`${lexend.variable} ${fredoka.variable} ${nunito.variable}`}>
       <body style={{ fontFamily: 'var(--font-lexend), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
         <AuthProvider>{children}</AuthProvider>
       </body>
