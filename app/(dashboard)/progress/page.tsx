@@ -9,6 +9,27 @@ import { useProgress, getSubjectCompletion } from '@/hooks/useProgress'
 import { useSubjects } from '@/hooks/useLessons'
 import { SUBJECTS } from '@/constants/subjects'
 
+/** Safely convert a Firestore Timestamp, JS Date, or null to a formatted date string. */
+function formatCompletedAt(
+  value: Date | { toDate: () => Date } | null | undefined
+): string {
+  if (!value) return 'No date'
+  let date: Date
+  if (value && 'toDate' in value && typeof value.toDate === 'function') {
+    date = value.toDate()
+  } else if (value instanceof Date) {
+    date = value
+  } else {
+    date = new Date(value as unknown as string)
+  }
+  if (isNaN(date.getTime())) return 'No date'
+  return date.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  })
+}
+
 export default function ProgressPage() {
   const { isAuthenticated, isLoading, user } = useAuth()
   const router = useRouter()
@@ -130,6 +151,7 @@ export default function ProgressPage() {
           border: 2px solid #EDE8D0;
           border-radius: 16px;
           transition: border-color 0.15s ease;
+          flex-wrap: wrap;
         }
         .lesson-row:hover { border-color: #2D2D2D; }
         @media (max-width: 900px) {
@@ -139,6 +161,11 @@ export default function ProgressPage() {
         @media (max-width: 600px) {
           .stats-strip { grid-template-columns: repeat(2,1fr) !important; }
           .subj-grid   { grid-template-columns: 1fr !important; }
+          .prog-main   { padding: 1.5rem 1rem !important; }
+        }
+        @media (max-width: 480px) {
+          .stat-card   { padding: 1rem !important; gap: 0.75rem !important; }
+          .lesson-row  { padding: 0.875rem 1rem; }
         }
       `}</style>
 
@@ -172,6 +199,7 @@ export default function ProgressPage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
+          className="prog-main"
           style={{
             position: 'relative', zIndex: 5,
             maxWidth: 1100, margin: '0 auto',
@@ -427,11 +455,7 @@ export default function ProgressPage() {
                             Lesson {comp.lessonId}
                           </p>
                           <p style={{ fontWeight: 600, fontSize: '0.8rem', color: '#7A7A7A' }}>
-                            {comp.completedAt
-                              ? new Date(comp.completedAt as unknown as number).toLocaleDateString(
-                                  'en-US', { month:'short', day:'numeric', year:'numeric' }
-                                )
-                              : 'No date'}
+                            {formatCompletedAt(comp.completedAt)}
                           </p>
                         </div>
                         <div style={{ textAlign: 'right', flexShrink: 0 }}>
