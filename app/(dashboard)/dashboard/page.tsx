@@ -85,7 +85,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Main content */}
-      <main style={{ position: 'relative', zIndex: 5, maxWidth: 1100, margin: '0 auto', padding: '2.5rem 2rem' }}>
+      <main style={{ position: 'relative', zIndex: 5, maxWidth: 1100, margin: '0 auto', padding: '2.5rem 2rem' }} className="dash-main">
         {/* Responsive style tag */}
         <style>{`
           html, body {
@@ -101,6 +101,10 @@ export default function DashboardPage() {
             .subject-grid  { grid-template-columns: 1fr !important; }
             .stats-strip   { grid-template-columns: repeat(2,1fr) !important; }
             .dashboard-greeting { flex-direction: column !important; align-items: flex-start !important; }
+            .dash-main { padding: 1.5rem 1rem !important; }
+          }
+          @media (max-width: 480px) {
+            .dash-stat-card { padding: 1rem !important; gap: 0.75rem !important; }
           }
         `}</style>
 
@@ -117,7 +121,7 @@ export default function DashboardPage() {
           }}
         >
           <div>
-            <h1 style={{ fontFamily: "'Fredoka One', cursive", fontSize: '3rem', color: '#2D2D2D', fontWeight: 900, lineHeight: 1.1, marginBottom: '0.15rem' }}>Hello, {displayName}! <span style={{ fontSize: '2.2rem' }}>👋</span></h1>
+            <h1 style={{ fontFamily: "'Fredoka One', cursive", fontSize: 'clamp(1.75rem, 5vw, 3rem)', color: '#2D2D2D', fontWeight: 900, lineHeight: 1.1, marginBottom: '0.15rem' }}>Hello, {displayName}! <span style={{ fontSize: 'clamp(1.4rem, 4vw, 2.2rem)' }}>👋</span></h1>
             <p style={{ fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 600, fontSize: '1.15rem', color: '#7A7A7A', marginTop: '0.15rem' }}>What do you want to learn today?</p>
           </div>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#FFFFFF', border: '2.5px solid #2D2D2D', borderRadius: 9999, padding: '0.6rem 1.25rem', boxShadow: '3px 3px 0 #2D2D2D', fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 900, fontSize: '1rem', color: '#2D2D2D', whiteSpace: 'nowrap' }}>
@@ -141,7 +145,7 @@ export default function DashboardPage() {
             { icon: '🏆', bg: '#F0FFF4', num: '—', label: 'Badges Earned' },
             { icon: '⭐', bg: '#FFF9E6', num: `${overallProgress}%`, label: 'Overall Progress' },
           ].map((s) => (
-            <div key={s.label} style={{
+            <div key={s.label} className="dash-stat-card" style={{
               background: '#FFFFFF',
               border: '2.5px solid #2D2D2D',
               borderRadius: 20,
