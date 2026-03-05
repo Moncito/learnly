@@ -79,10 +79,9 @@ export default function LessonsPage({ params }: LessonPageProps) {
     <div style={{
       width: '100%', minHeight: '100vh',
       background: '#FFFBF0', overflowX: 'hidden',
-      fontFamily: "'Nunito', sans-serif", position: 'relative',
+      fontFamily: "'Lexend', system-ui, sans-serif", position: 'relative',
     }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap');
         html, body {
           background: #FFFBF0 !important;
           margin: 0; padding: 0; overflow-x: hidden;
@@ -127,7 +126,7 @@ export default function LessonsPage({ params }: LessonPageProps) {
           .lessons-grid { grid-template-columns: 1fr !important; }
         }
         .back-btn {
-          font-family: 'Nunito', sans-serif;
+          font-family: 'Lexend', system-ui, sans-serif;
           font-weight: 800;
           font-size: 0.95rem;
           background: #FFFFFF;
@@ -239,7 +238,7 @@ export default function LessonsPage({ params }: LessonPageProps) {
             alignItems: 'flex-end', gap: '0.5rem', minWidth: 180,
           }}>
             <div style={{
-              fontFamily: "'Nunito', sans-serif",
+              fontFamily: "'Lexend', system-ui, sans-serif",
               fontWeight: 800, fontSize: '0.9rem', color: '#7A7A7A',
               display: 'flex', justifyContent: 'space-between',
               width: '100%',

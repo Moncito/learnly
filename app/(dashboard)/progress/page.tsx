@@ -29,7 +29,7 @@ export default function ProgressPage() {
         background: '#FFFBF0',
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
-        gap: '1rem', fontFamily: "'Nunito', sans-serif",
+        gap: '1rem', fontFamily: "'Lexend', system-ui, sans-serif",
       }}>
         <div style={{ fontSize: '4rem', animation: 'spin 1s linear infinite' }}>⏳</div>
         <p style={{
@@ -94,7 +94,6 @@ export default function ProgressPage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap');
         html, body {
           background: #FFFBF0 !important;
           margin: 0; padding: 0; overflow-x: hidden;
@@ -146,7 +145,7 @@ export default function ProgressPage() {
       <div style={{
         width: '100%', minHeight: '100vh',
         background: '#FFFBF0', overflowX: 'hidden',
-        fontFamily: "'Nunito', sans-serif", position: 'relative',
+        fontFamily: "'Lexend', system-ui, sans-serif", position: 'relative',
       }}>
 
         {/* BACKGROUND BLOBS */}
@@ -381,7 +380,7 @@ export default function ProgressPage() {
               {completedLessons.length === 0 ? (
                 <div style={{
                   textAlign: 'center', padding: '3rem 1rem',
-                  fontFamily: "'Nunito', sans-serif",
+                  fontFamily: "'Lexend', system-ui, sans-serif",
                 }}>
                   <div style={{ fontSize: '3.5rem', marginBottom: '0.875rem' }}>🚀</div>
                   <p style={{

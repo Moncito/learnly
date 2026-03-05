@@ -28,9 +28,10 @@ export function Navbar() {
       zIndex: 50,
       width: '100%',
       padding: '0.9rem 1.5rem',
-      background: 'rgba(255,251,240,0.96)',
+      background: 'rgba(255,251,240,0.97)',
       borderBottom: '2.5px solid #2D2D2D',
-      backdropFilter: 'blur(10px)',
+      backdropFilter: 'blur(12px)',
+      boxShadow: '0 2px 0 #2D2D2D',
     }}>
       <div
         style={{

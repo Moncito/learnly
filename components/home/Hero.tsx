@@ -3,17 +3,17 @@
 import { useRouter } from 'next/navigation'
 
 const CHIPS = [
-  { color: '#FF6B6B', label: '🔢 Math' },
-  { color: '#4D96FF', label: '📖 English' },
-  { color: '#6BCB77', label: '🔬 Science' },
-  { color: '#FFD93D', label: '🏆 Badges' },
+  { color: '#FF6B6B', bg: '#FFF0F0', label: '🔢 Math' },
+  { color: '#4D96FF', bg: '#EDF4FF', label: '📖 English' },
+  { color: '#6BCB77', bg: '#F0FFF4', label: '🔬 Science' },
+  { color: '#C77DFF', bg: '#F5EEFF', label: '🏆 Badges' },
 ]
 
 const STATS = [
-  { num: '3+',   label: 'Subjects to Explore' },
-  { num: '30+',  label: 'Fun Lessons' },
-  { num: '🏅',   label: 'Earn Cool Badges' },
-  { num: '100%', label: 'Kid-Safe Platform' },
+  { num: '3+',   label: 'Subjects',      accent: '#4D96FF', bg: '#EDF4FF' },
+  { num: '30+',  label: 'Fun Lessons',   accent: '#FF6B6B', bg: '#FFF0F0' },
+  { num: '🏅',   label: 'Cool Badges',   accent: '#FFD93D', bg: '#FFF9E6' },
+  { num: '100%', label: 'Kid-Safe',       accent: '#6BCB77', bg: '#F0FFF4' },
 ]
 
 export default function Hero() {
@@ -115,18 +115,14 @@ export default function Hero() {
         {CHIPS.map((chip, index) => (
           <div key={chip.label} style={{
             display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-            background: '#FFFFFF', border: '2.5px solid #2D2D2D',
+            background: chip.bg, border: `2.5px solid ${chip.color}`,
             borderRadius: 9999, padding: '0.5rem 1.25rem',
             fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 700,
-            fontSize: '1rem', boxShadow: '3px 3px 0 #2D2D2D',
+            fontSize: '1rem', boxShadow: `3px 3px 0 ${chip.color}`,
+            color: '#2D2D2D',
             animation: 'fadeInUp 0.6s ease-out forwards',
             animationDelay: `${index * 0.08 + 0.1}s`,
           }}>
-            <span style={{
-              width: 12, height: 12, borderRadius: '50%',
-              background: chip.color, display: 'inline-block',
-              flexShrink: 0,
-            }} />
             {chip.label}
           </div>
         ))}
@@ -139,24 +135,24 @@ export default function Hero() {
       }}>
         {STATS.map((s, index) => (
           <div key={s.label} style={{
-            background: '#FFFFFF',
-            border: '2.5px solid #2D2D2D',
-            borderRadius: 20, boxShadow: '4px 4px 0 #2D2D2D',
+            background: s.bg,
+            border: `2.5px solid ${s.accent}`,
+            borderRadius: 20, boxShadow: `4px 4px 0 ${s.accent}`,
             padding: '1.25rem 2rem', textAlign: 'center',
-            minWidth: 140,
+            minWidth: 130,
             animation: 'floatSoft 4s ease-in-out infinite',
             animationDelay: `${index * 0.25}s`,
           }}>
             <div style={{
               fontFamily: "'Fredoka One', cursive",
-              fontSize: '2.5rem', color: '#2D2D2D', lineHeight: 1,
+              fontSize: '2.5rem', color: s.accent, lineHeight: 1,
             }}>
               {s.num}
             </div>
             <div style={{
               fontFamily: "'Lexend', system-ui, sans-serif",
               fontSize: '0.85rem', fontWeight: 700,
-              color: '#7A7A7A', marginTop: '0.25rem',
+              color: '#5A5A5A', marginTop: '0.25rem',
             }}>
               {s.label}
             </div>

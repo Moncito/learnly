@@ -28,7 +28,7 @@ export default function DashboardPage() {
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
         gap: '1rem',
-        fontFamily: "'Nunito', sans-serif",
+        fontFamily: "'Lexend', system-ui, sans-serif",
       }}>
         <div style={{ fontSize: '4rem', animation: 'spin 1s linear infinite' }}>⏳</div>
         <p style={{ fontFamily: "'Fredoka One', cursive",
@@ -67,7 +67,7 @@ export default function DashboardPage() {
         width: '100%',
         minHeight: '100vh',
         background: '#FFFBF0',
-        fontFamily: "'Nunito', sans-serif",
+        fontFamily: "'Lexend', system-ui, sans-serif",
         overflowX: 'hidden',
         position: 'relative',
       }}
@@ -88,7 +88,6 @@ export default function DashboardPage() {
       <main style={{ position: 'relative', zIndex: 5, maxWidth: 1100, margin: '0 auto', padding: '2.5rem 2rem' }}>
         {/* Responsive style tag */}
         <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap');
           html, body {
             background: #FFFBF0 !important;
             margin: 0; padding: 0;
@@ -119,9 +118,9 @@ export default function DashboardPage() {
         >
           <div>
             <h1 style={{ fontFamily: "'Fredoka One', cursive", fontSize: '3rem', color: '#2D2D2D', fontWeight: 900, lineHeight: 1.1, marginBottom: '0.15rem' }}>Hello, {displayName}! <span style={{ fontSize: '2.2rem' }}>👋</span></h1>
-            <p style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 600, fontSize: '1.15rem', color: '#7A7A7A', marginTop: '0.15rem' }}>What do you want to learn today?</p>
+            <p style={{ fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 600, fontSize: '1.15rem', color: '#7A7A7A', marginTop: '0.15rem' }}>What do you want to learn today?</p>
           </div>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#FFFFFF', border: '2.5px solid #2D2D2D', borderRadius: 9999, padding: '0.6rem 1.25rem', boxShadow: '3px 3px 0 #2D2D2D', fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: '1rem', color: '#2D2D2D', whiteSpace: 'nowrap' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#FFFFFF', border: '2.5px solid #2D2D2D', borderRadius: 9999, padding: '0.6rem 1.25rem', boxShadow: '3px 3px 0 #2D2D2D', fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 900, fontSize: '1rem', color: '#2D2D2D', whiteSpace: 'nowrap' }}>
             ⭐ Keep it up! <span style={{ color: '#FF6B6B', fontWeight: 900 }}>{overallProgress}% complete</span>
           </div>
         </div>
@@ -179,7 +178,7 @@ export default function DashboardPage() {
         <div style={{ marginBottom: '2.5rem' }}>
           <p
             style={{
-              fontFamily: "'Nunito', sans-serif",
+              fontFamily: "'Lexend', system-ui, sans-serif",
               fontWeight: 900,
               fontSize: '0.8rem',
               color: '#7A7A7A',
@@ -231,6 +230,7 @@ export default function DashboardPage() {
                 href={`/lessons/${subject.id}`}
                 style={{
                   border: '2.5px solid #2D2D2D',
+                  borderTop: `5px solid ${subjectColor}`,
                   borderRadius: 24,
                   boxShadow: '5px 5px 0 #2D2D2D',
                   padding: '2rem 1.75rem',
@@ -243,6 +243,7 @@ export default function DashboardPage() {
                   transition: 'transform 0.2s, box-shadow 0.2s',
                   cursor: 'pointer',
                   position: 'relative',
+                  textDecoration: 'none',
                 }}
                 onMouseEnter={e => {
                   e.currentTarget.style.transform = 'translate(-4px,-4px)';
@@ -253,7 +254,14 @@ export default function DashboardPage() {
                   e.currentTarget.style.boxShadow = '5px 5px 0 #2D2D2D';
                 }}
               >
-                <div style={{ fontSize: '3.25rem', marginBottom: 16 }}>{subject.icon}</div>
+                {/* Icon with coloured background */}
+                <div style={{
+                  width: 72, height: 72, borderRadius: 20,
+                  background: '#FFFFFF', border: `2.5px solid ${subjectColor}`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: '2.25rem', marginBottom: 8,
+                  boxShadow: `3px 3px 0 ${subjectColor}`,
+                }}>{subject.icon}</div>
                 <div style={{ marginBottom: 12 }}>
                   <h3
                     style={{
@@ -267,7 +275,7 @@ export default function DashboardPage() {
                   </h3>
                   <p
                     style={{
-                      fontFamily: "'Nunito', sans-serif",
+                      fontFamily: "'Lexend', system-ui, sans-serif",
                       fontWeight: 600,
                       fontSize: '1.08rem',
                       color: '#7A7A7A',
@@ -281,23 +289,23 @@ export default function DashboardPage() {
                 <div style={{ alignSelf: 'stretch', width: '100%', marginBottom: 8 }}>
                   <p
                     style={{
-                      fontFamily: "'Nunito', sans-serif",
+                      fontFamily: "'Lexend', system-ui, sans-serif",
                       fontWeight: 700,
-                      fontSize: '1rem',
-                      color: '#7A7A7A',
+                      fontSize: '0.9rem',
+                      color: subjectColor,
                       textAlign: 'left',
                       marginBottom: 6,
                     }}
                   >
-                    ⭐ {completedLessons}/{totalLessons} lessons
+                    ⭐ {completedLessons}/{totalLessons} lessons · {percentage}%
                   </p>
                   <div
                     style={{
                       width: '100%',
                       height: 12,
-                      background: '#EDE8D0',
+                      background: '#FFFFFF',
                       borderRadius: 9999,
-                      border: '1.5px solid #2D2D2D',
+                      border: `1.5px solid ${subjectColor}`,
                       overflow: 'hidden',
                       marginBottom: 4,
                     }}
@@ -316,17 +324,17 @@ export default function DashboardPage() {
                 {/* Start Learning Button */}
                 <button
                   style={{
-                    fontFamily: "'Nunito', sans-serif",
+                    fontFamily: "'Lexend', system-ui, sans-serif",
                     fontWeight: 900,
                     fontSize: '1.08rem',
-                    background: '#FFD93D',
-                    color: '#2D2D2D',
+                    background: subjectColor,
+                    color: '#FFFFFF',
                     border: '2.5px solid #2D2D2D',
                     borderRadius: 9999,
                     padding: '0.85rem 2.25rem',
                     width: '100%',
                     cursor: 'pointer',
-                    boxShadow: '3px 3px 0 #2D2D2D',
+                    boxShadow: `3px 3px 0 #2D2D2D`,
                     marginTop: 'auto',
                     transition: 'transform 0.15s, box-shadow 0.15s',
                   }}
@@ -382,7 +390,7 @@ export default function DashboardPage() {
               style={{
                 textAlign: 'center',
                 padding: '2.5rem 1rem',
-                fontFamily: "'Nunito', sans-serif",
+                fontFamily: "'Lexend', system-ui, sans-serif",
               }}
             >
               <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>🚀</div>

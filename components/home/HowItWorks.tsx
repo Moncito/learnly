@@ -19,6 +19,7 @@ export default function HowItWorks() {
             style={{
               background: '#FFFFFF',
               border: '2.5px solid #2D2D2D',
+              borderTop: `5px solid ${step.color}`,
               borderRadius: 24,
               boxShadow: '5px 5px 0 #2D2D2D',
               padding: '1.75rem',
@@ -33,10 +34,15 @@ export default function HowItWorks() {
               e.currentTarget.style.boxShadow = '5px 5px 0 #2D2D2D'
             }}
           >
+            {/* Step number badge */}
             <div style={{
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              width: 44, height: 44, borderRadius: 14,
+              background: step.color, border: '2.5px solid #2D2D2D',
               fontFamily: "'Fredoka One', cursive",
-              fontSize: '3.5rem', lineHeight: 1,
-              color: step.color, marginBottom: '0.75rem',
+              fontSize: '1.25rem', lineHeight: 1,
+              color: '#2D2D2D', marginBottom: '0.75rem',
+              boxShadow: '2px 2px 0 #2D2D2D',
             }}>
               {step.n}
             </div>
