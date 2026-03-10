@@ -39,3 +39,19 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Android build outputs
+android/app/build/
+android/.gradle/
+android/build/
+
+# Next.js
+.next/
+out/
+
+# Dependencies
+node_modules/
+
+# Environment variables
+.env.local
+.env
