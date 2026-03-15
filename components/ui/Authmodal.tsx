@@ -37,7 +37,7 @@ export default function AuthModal({ initialTab = 'login', onClose }: AuthModalPr
             position: 'absolute', top: '1rem', right: '1rem',
             width: 36, height: 36, borderRadius: '50%',
             border: '2px solid #2D2D2D', background: '#FFFBF0',
-            fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 900,
+            fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 900,
             fontSize: '1rem', cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             transition: 'background 0.15s, color 0.15s',
@@ -47,10 +47,10 @@ export default function AuthModal({ initialTab = 'login', onClose }: AuthModalPr
         >✕</button>
 
         {/* Heading */}
-        <h2 style={{ fontFamily: "'Fredoka One', cursive", fontSize: '2.25rem', color: '#2D2D2D', marginBottom: '0.25rem' }}>
+        <h2 style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontSize: '2.25rem', color: '#2D2D2D', marginBottom: '0.25rem' }}>
           {tab === 'login' ? 'Welcome back! 👋' : 'Join Learnly! 🎉'}
         </h2>
-        <p style={{ fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 600, fontSize: '1rem', color: '#7A7A7A', marginBottom: '1.5rem' }}>
+        <p style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 600, fontSize: '1rem', color: '#7A7A7A', marginBottom: '1.5rem' }}>
           {tab === 'login' ? 'Log in to continue your learning journey.' : 'Create a free account and start exploring.'}
         </p>
 
@@ -62,7 +62,7 @@ export default function AuthModal({ initialTab = 'login', onClose }: AuthModalPr
         }}>
           {(['login', 'signup'] as const).map(t => (
             <button key={t} onClick={() => setTab(t)} style={{
-              flex: 1, fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 900,
+              flex: 1, fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 900,
               fontSize: '1rem', border: 'none', borderRadius: 9999,
               padding: '0.5rem', cursor: 'pointer',
               background: tab === t ? '#FFD93D' : 'transparent',
@@ -92,7 +92,7 @@ export default function AuthModal({ initialTab = 'login', onClose }: AuthModalPr
 
           {/* Divider */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem',
-            fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 800,
+            fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 800,
             fontSize: '0.85rem', color: '#7A7A7A' }}>
             <div style={{ flex: 1, height: 1.5, background: '#EDE8D0' }} />
             or
@@ -122,12 +122,12 @@ function FormField({ label, type, placeholder }: { label: string; type: string; 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
       <label style={{
-        fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 900,
+        fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 900,
         fontSize: '0.75rem', textTransform: 'uppercase',
         letterSpacing: 1, color: '#2D2D2D',
       }}>{label}</label>
       <input type={type} placeholder={placeholder} style={{
-        fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 600,
+        fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 600,
         fontSize: '1rem', border: '2.5px solid #2D2D2D',
         borderRadius: 14, padding: '0.75rem 1rem',
         background: '#FFFBF0', outline: 'none', color: '#2D2D2D',

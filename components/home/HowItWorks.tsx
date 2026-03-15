@@ -39,7 +39,7 @@ export default function HowItWorks() {
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
               width: 44, height: 44, borderRadius: 14,
               background: step.color, border: '2.5px solid #2D2D2D',
-              fontFamily: "'Fredoka One', cursive",
+              fontFamily: "'Poppins', system-ui, sans-serif",
               fontSize: '1.25rem', lineHeight: 1,
               color: '#2D2D2D', marginBottom: '0.75rem',
               boxShadow: '2px 2px 0 #2D2D2D',
@@ -48,13 +48,13 @@ export default function HowItWorks() {
             </div>
             <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>{step.icon}</div>
             <h3 style={{
-              fontFamily: "'Fredoka One', cursive",
+              fontFamily: "'Poppins', system-ui, sans-serif",
               fontSize: '1.5rem', color: '#2D2D2D', marginBottom: '0.5rem',
             }}>
               {step.title}
             </h3>
             <p style={{
-              fontFamily: "'Lexend', system-ui, sans-serif",
+              fontFamily: "'Poppins', system-ui, sans-serif",
               fontSize: '1rem', fontWeight: 600,
               color: '#7A7A7A', lineHeight: 1.6,
             }}>

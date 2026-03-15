@@ -111,7 +111,7 @@ export function ResultScreen({
           <motion.h1
             variants={itemVariants}
             style={{
-              fontFamily: "'Fredoka One', cursive",
+              fontFamily: "'Poppins', system-ui, sans-serif",
               fontSize: 'clamp(2.5rem, 8vw, 4rem)',
               color: '#2D2D2D', lineHeight: 1.1,
               textAlign: 'center', margin: 0,
@@ -146,7 +146,7 @@ export function ResultScreen({
           >
             {/* Big percentage */}
             <div style={{
-              fontFamily: "'Fredoka One', cursive",
+              fontFamily: "'Poppins', system-ui, sans-serif",
               fontSize: 'clamp(4rem, 15vw, 6rem)',
               color: scoreColor, lineHeight: 1,
             }}>

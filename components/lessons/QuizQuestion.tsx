@@ -30,7 +30,7 @@ export function QuizQuestion({
         <h1
           className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 md:mb-6"
           style={{
-            fontFamily: "'Fredoka One', cursive",
+            fontFamily: "'Poppins', system-ui, sans-serif",
             color: subjectColor,
           }}
         >

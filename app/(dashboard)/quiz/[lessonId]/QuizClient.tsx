@@ -37,7 +37,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
         minHeight: '100vh', background: '#FFFBF0',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
-        <div style={{ fontFamily: "'Fredoka One', cursive", fontSize: '2rem', color: '#2D2D2D' }}>
+        <div style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontSize: '2rem', color: '#2D2D2D' }}>
           ⏳ Loading...
         </div>
       </div>
@@ -50,7 +50,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
         minHeight: '100vh', background: '#FFFBF0',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
-        <div style={{ fontFamily: "'Fredoka One', cursive", fontSize: '2rem', color: '#FF6B6B' }}>
+        <div style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontSize: '2rem', color: '#FF6B6B' }}>
           Subject not found
         </div>
       </div>
@@ -148,7 +148,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
           display: 'flex', flexDirection: 'column',
           alignItems: 'center', justifyContent: 'center',
           padding: '2rem 1.5rem',
-          fontFamily: "'Lexend', system-ui, sans-serif",
+          fontFamily: "'Poppins', system-ui, sans-serif",
           position: 'relative', overflow: 'hidden',
         }}>
           <div style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
@@ -175,7 +175,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
             </div>
 
             <h1 style={{
-              fontFamily: "'Fredoka One', cursive",
+              fontFamily: "'Poppins', system-ui, sans-serif",
               fontSize: 'clamp(2.5rem, 8vw, 4rem)',
               color: '#2D2D2D', lineHeight: 1.1,
               textAlign: 'center', margin: 0,
@@ -199,7 +199,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
               alignItems: 'center', gap: '1.25rem',
             }}>
               <div style={{
-                fontFamily: "'Fredoka One', cursive",
+                fontFamily: "'Poppins', system-ui, sans-serif",
                 fontSize: 'clamp(4rem, 15vw, 6rem)',
                 color: scoreColor, lineHeight: 1,
               }}>
@@ -247,7 +247,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
 
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', width: '100%' }}>
               <button onClick={handleTryAgain} style={{
-                fontFamily: "'Lexend', system-ui, sans-serif",
+                fontFamily: "'Poppins', system-ui, sans-serif",
                 fontWeight: 900, fontSize: '1.1rem',
                 background: '#FF6B6B', color: '#FFFFFF',
                 border: '2.5px solid #2D2D2D', borderRadius: 9999,
@@ -257,7 +257,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
                 🔄 Try Again
               </button>
               <button onClick={() => router.push(`/lessons/${lesson?.subjectId}`)} style={{
-                fontFamily: "'Lexend', system-ui, sans-serif",
+                fontFamily: "'Poppins', system-ui, sans-serif",
                 fontWeight: 900, fontSize: '1.1rem',
                 background: '#FFD93D', color: '#2D2D2D',
                 border: '2.5px solid #2D2D2D', borderRadius: 9999,
@@ -281,7 +281,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
       <style>{`
         html, body { background: #FFFBF0 !important; margin: 0; padding: 0; overflow-x: hidden; }
         .answer-btn {
-          font-family: 'Lexend', system-ui, sans-serif; font-weight: 900;
+          font-family: 'Poppins', system-ui, sans-serif; font-weight: 900;
           font-size: clamp(1rem, 2.5vw, 1.15rem); background: #FFFFFF; color: #2D2D2D;
           border: 2.5px solid #2D2D2D; border-radius: 20px; padding: 1.25rem 1.5rem;
           width: 100%; cursor: pointer; box-shadow: 4px 4px 0 #2D2D2D;
@@ -294,7 +294,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
         .answer-btn.wrong { background: #FF6B6B; color: #FFFFFF; border-color: #2D2D2D; box-shadow: 4px 4px 0 #2D2D2D; }
         .answer-btn.revealed { background: #6BCB77; color: #FFFFFF; border-color: #2D2D2D; box-shadow: 4px 4px 0 #2D2D2D; }
         .next-btn {
-          font-family: 'Lexend', system-ui, sans-serif; font-weight: 900; font-size: 1.15rem;
+          font-family: 'Poppins', system-ui, sans-serif; font-weight: 900; font-size: 1.15rem;
           background: #FFD93D; color: #2D2D2D; border: 2.5px solid #2D2D2D; border-radius: 9999px;
           padding: 1rem 3rem; cursor: pointer; box-shadow: 4px 4px 0 #2D2D2D;
           transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -310,7 +310,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
 
       <div style={{
         width: '100%', minHeight: '100vh', background: '#FFFBF0', overflowX: 'hidden',
-        fontFamily: "'Lexend', system-ui, sans-serif", position: 'relative',
+        fontFamily: "'Poppins', system-ui, sans-serif", position: 'relative',
         display: 'flex', flexDirection: 'column',
       }}>
         {/* Background blobs */}
@@ -330,12 +330,12 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
               <button
                 onClick={() => router.back()}
                 style={{
-                  fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 800, fontSize: '0.9rem',
+                  fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 800, fontSize: '0.9rem',
                   background: '#FFFFFF', color: '#2D2D2D', border: '2px solid #2D2D2D', borderRadius: 9999,
                   padding: '0.35rem 0.875rem', cursor: 'pointer', boxShadow: '2px 2px 0 #2D2D2D',
                 }}
               >← Back</button>
-              <span style={{ fontFamily: "'Fredoka One', cursive", fontSize: '1.1rem', color: subjectColor }}>
+              <span style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontSize: '1.1rem', color: subjectColor }}>
                 {lesson.title}
               </span>
             </div>
@@ -373,7 +373,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
               </div>
 
               <h2 style={{
-                fontFamily: "'Fredoka One', cursive", fontSize: 'clamp(1.5rem, 4vw, 2.25rem)',
+                fontFamily: "'Poppins', system-ui, sans-serif", fontSize: 'clamp(1.5rem, 4vw, 2.25rem)',
                 color: '#2D2D2D', lineHeight: 1.3,
                 margin: currentQuestion?.imageUrl ? '0 0 1.25rem 0' : '0',
               }}>
@@ -413,7 +413,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
                           background: isHighlighted ? 'rgba(255,255,255,0.3)' : subjectBg,
                           border: `2px solid ${isHighlighted ? 'rgba(255,255,255,0.5)' : subjectColor}`,
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          fontFamily: "'Fredoka One', cursive", fontSize: '1rem',
+                          fontFamily: "'Poppins', system-ui, sans-serif", fontSize: '1rem',
                           color: isHighlighted ? '#FFFFFF' : subjectColor, flexShrink: 0,
                         }}>
                           {letters[index]}
@@ -442,7 +442,7 @@ export default function QuizClient({ lessonId }: QuizClientProps) {
                   </span>
                   <div>
                     <p style={{
-                      fontFamily: "'Fredoka One', cursive", fontSize: '1.4rem',
+                      fontFamily: "'Poppins', system-ui, sans-serif", fontSize: '1.4rem',
                       color: selectedAnswer === currentQuestion?.answer ? '#6BCB77' : '#FF6B6B',
                       margin: '0 0 0.15rem 0',
                     }}>

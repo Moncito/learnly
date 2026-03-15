@@ -49,14 +49,14 @@ export function SubjectCard({ subject, onSelect, href }: SubjectCardProps) {
           className="text-2xl text-center mb-2"
           style={{
             color: subject.color,
-            fontFamily: "'Fredoka One', cursive",
+            fontFamily: "'Poppins', system-ui, sans-serif",
           }}
         >
           {subject.name}
         </h3>
         <p
           className="text-center text-base text-[#7A7A7A]"
-          style={{ fontFamily: "'Lexend', system-ui, sans-serif" }}
+          style={{ fontFamily: "'Poppins', system-ui, sans-serif" }}
         >
           {subject.description}
         </p>

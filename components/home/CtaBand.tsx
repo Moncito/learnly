@@ -37,7 +37,7 @@ export default function CtaBand() {
         }} />
 
         <h2 style={{
-          fontFamily: "'Fredoka One', cursive",
+          fontFamily: "'Poppins', system-ui, sans-serif",
           fontSize: 'clamp(2rem, 5vw, 3rem)',
           color: '#FFFFFF', marginBottom: '0.75rem',
           position: 'relative', zIndex: 1,
@@ -45,7 +45,7 @@ export default function CtaBand() {
           Ready to start the adventure? 🌈
         </h2>
         <p style={{
-          fontFamily: "'Lexend', system-ui, sans-serif",
+          fontFamily: "'Poppins', system-ui, sans-serif",
           fontWeight: 700, fontSize: '1.1rem',
           color: 'rgba(255,255,255,0.9)',
           marginBottom: '2rem', maxWidth: 440,

@@ -33,7 +33,7 @@ export function LessonCard({
             <h3
               className="text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2"
               style={{
-                fontFamily: "'Fredoka One', cursive",
+                fontFamily: "'Poppins', system-ui, sans-serif",
                 color: subjectColor,
               }}
             >

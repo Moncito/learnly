@@ -46,7 +46,7 @@ export function Navbar() {
         {/* ── LOGO ── */}
         <Link href={isAuthenticated ? '/dashboard' : '/'} style={{ textDecoration: 'none' }}>
           <span style={{
-            fontFamily: "'Fredoka One', cursive",
+            fontFamily: "'Poppins', system-ui, sans-serif",
             fontSize: '2rem',
             color: '#2D2D2D',
             lineHeight: 1,
@@ -75,7 +75,7 @@ export function Navbar() {
         >
           {isAuthenticated ? (
             <>
-              <span style={{ fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 700, fontSize: '0.95rem', color: '#2D2D2D' }}>
+              <span style={{ fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700, fontSize: '0.95rem', color: '#2D2D2D' }}>
                 Hello, {user?.displayName}! 👋
               </span>
               <button
@@ -234,7 +234,7 @@ export function Navbar() {
 
 /* ── STYLE CONSTANTS ── */
 const btnBase: React.CSSProperties = {
-  fontFamily: "'Lexend', system-ui, sans-serif",
+  fontFamily: "'Poppins', system-ui, sans-serif",
   fontWeight: 800, fontSize: '1rem',
   padding: '0.5rem 1.25rem',
   borderRadius: 9999,
@@ -249,14 +249,14 @@ const btnBase: React.CSSProperties = {
 }
 
 const navLinkStyle: React.CSSProperties = {
-  fontFamily: "'Lexend', system-ui, sans-serif",
+  fontFamily: "'Poppins', system-ui, sans-serif",
   fontWeight: 800, fontSize: '1rem',
   color: '#2D2D2D', textDecoration: 'none',
   transition: 'color 0.15s',
 }
 
 const mobileLinkStyle: React.CSSProperties = {
-  fontFamily: "'Lexend', system-ui, sans-serif",
+  fontFamily: "'Poppins', system-ui, sans-serif",
   fontWeight: 800, fontSize: '1.1rem',
   color: '#2D2D2D', textDecoration: 'none',
   padding: '0.5rem 0',

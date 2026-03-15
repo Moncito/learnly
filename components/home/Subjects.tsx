@@ -59,7 +59,7 @@ export default function Subjects() {
 
             <div style={{
               display: 'inline-block',
-              fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 900,
+              fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 900,
               fontSize: '0.75rem', textTransform: 'uppercase' as const,
               letterSpacing: 2, padding: '0.25rem 0.9rem',
               borderRadius: 9999, background: s.color,
@@ -69,14 +69,14 @@ export default function Subjects() {
             </div>
 
             <h3 style={{
-              fontFamily: "'Fredoka One', cursive",
+              fontFamily: "'Poppins', system-ui, sans-serif",
               fontSize: '1.75rem', color: '#2D2D2D', marginBottom: '0.5rem',
             }}>
               {s.title}
             </h3>
 
             <p style={{
-              fontFamily: "'Lexend', system-ui, sans-serif",
+              fontFamily: "'Poppins', system-ui, sans-serif",
               fontSize: '1rem', fontWeight: 600,
               color: '#7A7A7A', lineHeight: 1.6, marginBottom: '1.25rem',
             }}>
@@ -86,7 +86,7 @@ export default function Subjects() {
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
               {s.pills.map((pill) => (
                 <span key={pill} style={{
-                  fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 700,
+                  fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700,
                   fontSize: '0.85rem', background: '#FFFFFF',
                   border: `1.5px solid ${s.color}`, borderRadius: 9999,
                   padding: '0.2rem 0.75rem', color: s.color,

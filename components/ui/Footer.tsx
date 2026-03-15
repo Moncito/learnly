@@ -16,14 +16,14 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <div style={{
-            fontFamily: "'Fredoka One', cursive",
+            fontFamily: "'Poppins', system-ui, sans-serif",
             fontSize: '2rem', marginBottom: '0.75rem',
           }}>
             <span style={{ color: '#4D96FF' }}>Learn</span>
             <span style={{ color: '#FFD93D' }}>ly</span>
           </div>
           <p style={{
-            fontFamily: "'Lexend', system-ui, sans-serif",
+            fontFamily: "'Poppins', system-ui, sans-serif",
             fontWeight: 600, fontSize: '0.9rem',
             color: 'rgba(255,251,240,0.7)', lineHeight: 1.7,
             maxWidth: 220,
@@ -33,7 +33,7 @@ export default function Footer() {
           <div style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
             {['🔢 Math', '📖 English', '🔬 Science'].map((tag) => (
               <span key={tag} style={{
-                fontFamily: "'Lexend', system-ui, sans-serif",
+                fontFamily: "'Poppins', system-ui, sans-serif",
                 fontWeight: 700, fontSize: '0.75rem',
                 background: 'rgba(255,251,240,0.1)',
                 border: '1.5px solid rgba(255,251,240,0.25)',
@@ -47,7 +47,7 @@ export default function Footer() {
         {/* Quick Links */}
         <div>
           <h4 style={{
-            fontFamily: "'Fredoka One', cursive",
+            fontFamily: "'Poppins', system-ui, sans-serif",
             fontSize: '1.1rem', color: '#FFD93D',
             marginBottom: '1rem', letterSpacing: 0.5,
           }}>Quick Links</h4>
@@ -60,7 +60,7 @@ export default function Footer() {
             ].map((link) => (
               <li key={link.href}>
                 <a href={link.href} style={{
-                  fontFamily: "'Lexend', system-ui, sans-serif",
+                  fontFamily: "'Poppins', system-ui, sans-serif",
                   fontWeight: 700, fontSize: '0.9rem',
                   color: 'rgba(255,251,240,0.75)',
                   textDecoration: 'none',
@@ -79,7 +79,7 @@ export default function Footer() {
         {/* Subjects */}
         <div>
           <h4 style={{
-            fontFamily: "'Fredoka One', cursive",
+            fontFamily: "'Poppins', system-ui, sans-serif",
             fontSize: '1.1rem', color: '#FFD93D',
             marginBottom: '1rem', letterSpacing: 0.5,
           }}>Subjects</h4>
@@ -91,7 +91,7 @@ export default function Footer() {
             ].map((sub) => (
               <li key={sub.label}>
                 <span style={{
-                  fontFamily: "'Lexend', system-ui, sans-serif",
+                  fontFamily: "'Poppins', system-ui, sans-serif",
                   fontWeight: 700, fontSize: '0.9rem',
                   color: sub.color,
                 }}>{sub.label}</span>
@@ -103,7 +103,7 @@ export default function Footer() {
         {/* Trust */}
         <div>
           <h4 style={{
-            fontFamily: "'Fredoka One', cursive",
+            fontFamily: "'Poppins', system-ui, sans-serif",
             fontSize: '1.1rem', color: '#FFD93D',
             marginBottom: '1rem', letterSpacing: 0.5,
           }}>Why Learnly?</h4>
@@ -117,7 +117,7 @@ export default function Footer() {
             ].map((item) => (
               <li key={item}>
                 <span style={{
-                  fontFamily: "'Lexend', system-ui, sans-serif",
+                  fontFamily: "'Poppins', system-ui, sans-serif",
                   fontWeight: 600, fontSize: '0.9rem',
                   color: 'rgba(255,251,240,0.75)',
                 }}>{item}</span>
@@ -132,7 +132,7 @@ export default function Footer() {
         borderTop: '1.5px solid rgba(255,251,240,0.12)',
         padding: '1.25rem 1.5rem',
         textAlign: 'center',
-        fontFamily: "'Lexend', system-ui, sans-serif",
+        fontFamily: "'Poppins', system-ui, sans-serif",
         fontWeight: 600, fontSize: '0.85rem',
         color: 'rgba(255,251,240,0.45)',
       }}>

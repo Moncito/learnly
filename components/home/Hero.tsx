@@ -33,7 +33,7 @@ export default function Hero() {
         display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
         background: '#FFFFFF', border: '2.5px solid #2D2D2D',
         borderRadius: 9999, padding: '0.4rem 1.25rem',
-        fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 700,
+        fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700,
         fontSize: '0.9rem', boxShadow: '3px 3px 0 #2D2D2D',
         marginBottom: '2rem',
       }}>
@@ -48,7 +48,7 @@ export default function Hero() {
 
       {/* Headline */}
       <h1 style={{
-        fontFamily: "'Lexend', system-ui, sans-serif",
+        fontFamily: "'Poppins', system-ui, sans-serif",
         fontSize: 'clamp(2.6rem, 7vw, 4.4rem)',
         fontWeight: 800, letterSpacing: '-0.03em',
         lineHeight: 1.1, color: '#2D2D2D',
@@ -64,7 +64,7 @@ export default function Hero() {
 
       {/* Tagline */}
       <p style={{
-        fontFamily: "'Lexend', system-ui, sans-serif",
+        fontFamily: "'Poppins', system-ui, sans-serif",
         fontSize: '1.1rem', fontWeight: 600,
         color: '#7A7A7A', letterSpacing: '0.02em',
         marginBottom: '1.5rem',
@@ -74,7 +74,7 @@ export default function Hero() {
 
       {/* Description */}
       <p style={{
-        fontFamily: "'Lexend', system-ui, sans-serif",
+        fontFamily: "'Poppins', system-ui, sans-serif",
         fontSize: '1.125rem', fontWeight: 600,
         color: '#7A7A7A', maxWidth: 520,
         lineHeight: 1.7, marginBottom: '2.5rem',
@@ -117,7 +117,7 @@ export default function Hero() {
             display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
             background: chip.bg, border: `2.5px solid ${chip.color}`,
             borderRadius: 9999, padding: '0.5rem 1.25rem',
-            fontFamily: "'Lexend', system-ui, sans-serif", fontWeight: 700,
+            fontFamily: "'Poppins', system-ui, sans-serif", fontWeight: 700,
             fontSize: '1rem', boxShadow: `3px 3px 0 ${chip.color}`,
             color: '#2D2D2D',
             animation: 'fadeInUp 0.6s ease-out forwards',
@@ -144,13 +144,13 @@ export default function Hero() {
             animationDelay: `${index * 0.25}s`,
           }}>
             <div style={{
-              fontFamily: "'Fredoka One', cursive",
+              fontFamily: "'Poppins', system-ui, sans-serif",
               fontSize: '2.5rem', color: s.accent, lineHeight: 1,
             }}>
               {s.num}
             </div>
             <div style={{
-              fontFamily: "'Lexend', system-ui, sans-serif",
+              fontFamily: "'Poppins', system-ui, sans-serif",
               fontSize: '0.85rem', fontWeight: 700,
               color: '#5A5A5A', marginTop: '0.25rem',
             }}>

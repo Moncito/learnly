@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --font-lexend:  'Lexend', system-ui, sans-serif;
-  --font-fredoka: 'Fredoka One', cursive;
+  --font-lexend:  'Poppins', system-ui, sans-serif;
+  --font-fredoka: 'Poppins', system-ui, sans-serif;
   --font-nunito:  'Nunito', system-ui, sans-serif;
 }
 
@@ -200,7 +200,7 @@ html, body {
 /* ── LEARNLY SHARED STYLES ── */
 
 .btn {
-  font-family: 'Lexend', system-ui, sans-serif;
+  font-family: 'Poppins', system-ui, sans-serif;
   font-weight: 800;
   border-radius: 9999px;
   border: 2.5px solid #2D2D2D;
@@ -252,7 +252,7 @@ html, body {
 }
 .section-eyebrow {
   text-align: center;
-  font-family: 'Lexend', system-ui, sans-serif;
+  font-family: 'Poppins', system-ui, sans-serif;
   font-weight: 900;
   font-size: 0.8rem;
   color: #7A7A7A;
@@ -261,7 +261,7 @@ html, body {
   margin-bottom: 0.5rem;
 }
 .section-title {
-  font-family: 'Fredoka One', cursive;
+  font-family: 'Poppins', system-ui, sans-serif;
   font-size: 3rem;
   color: #2D2D2D;
   text-align: center;
