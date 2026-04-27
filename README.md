@@ -1,4 +1,4 @@
-# 🎓 Learnly
+# Learnly
 
 > A fun, safe, and interactive learning world built for little minds aged 3–6.
 
@@ -10,24 +10,24 @@
 
 ---
 
-## 📖 Overview
+## Overview
 
 Learnly is a preschool learning platform that helps children aged 3–6 explore **Math**, **English**, and **Science** through interactive quizzes, fun visuals, and a reward system. Built with a neo-brutalist design system using warm colors, big fonts, and playful animations — designed to delight both kids and parents.
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🔢 **Math** — Counting, shapes, addition, and patterns
-- 📖 **English** — Alphabet, phonics, first words, and rhyming
-- 🔬 **Science** — Animals, plants, weather, body parts, and colors
-- 🏆 **Progress Tracking** — Per-user progress saved to Firestore in real time
-- 🔒 **Sequential Unlocking** — Complete a lesson to unlock the next one
-- ⭐ **Star Ratings** — 1–3 stars based on quiz score
-- 👤 **Auth** — Email/password and Google sign-in via Firebase Auth
-- 📊 **Progress Page** — Subject breakdown with completion percentages
-- 📱 **Responsive** — Works on mobile, tablet, and desktop
-- 🔐 **Per-user data isolation** — Each user's progress is completely private
+-  **Math** — Counting, shapes, addition, and patterns
+-  **English** — Alphabet, phonics, first words, and rhyming
+-  **Science** — Animals, plants, weather, body parts, and colors
+-  **Progress Tracking** — Per-user progress saved to Firestore in real time
+-  **Sequential Unlocking** — Complete a lesson to unlock the next one
+-  **Star Ratings** — 1–3 stars based on quiz score
+-  **Auth** — Email/password and Google sign-in via Firebase Auth
+-  **Progress Page** — Subject breakdown with completion percentages
+-  **Responsive** — Works on mobile, tablet, and desktop
+-  **Per-user data isolation** — Each user's progress is completely private
 
 ---
 
@@ -46,7 +46,7 @@ Learnly is a preschool learning platform that helps children aged 3–6 explore 
 
 ---
 
-## 🗂 Project Structure
+## Project Structure
 
 ```
 learnly/
@@ -184,11 +184,11 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 📚 Lesson Content
+##  Lesson Content
 
 Learnly ships with **15 lessons** across 3 subjects — 5 per subject:
 
-### 🔢 Math
+###  Math
 
 | #   | Lesson          | Difficulty |
 | --- | --------------- | ---------- |
@@ -220,7 +220,7 @@ Learnly ships with **15 lessons** across 3 subjects — 5 per subject:
 
 ---
 
-## 🎨 Design System
+## Design System
 
 Learnly uses a **neo-brutalist** design language:
 
@@ -281,7 +281,7 @@ vercel --prod
 
 ---
 
-## 📋 Scripts
+## Scripts
 
 ```bash
 npm run dev      # Start development server
@@ -304,7 +304,7 @@ npm run lint     # Run ESLint
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please open an issue first to discuss what you'd like to change.
 
