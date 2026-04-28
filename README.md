@@ -31,7 +31,7 @@ Learnly is a preschool learning platform that helps children aged 3–6 explore 
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Layer      | Technology                                       |
 | ---------- | ------------------------------------------------ |
@@ -91,7 +91,7 @@ learnly/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -264,7 +264,7 @@ users/
 
 ---
 
-## 🚢 Deployment
+## Deployment
 
 ### Deploy to Vercel
 
@@ -292,7 +292,7 @@ npm run lint     # Run ESLint
 
 ---
 
-## 🔮 Roadmap
+## Roadmap
 
 - [ ] Badges and achievements system
 - [ ] Parent dashboard with child progress overview
@@ -316,7 +316,7 @@ Contributions are welcome! Please open an issue first to discuss what you'd like
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
 
