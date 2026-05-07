@@ -198,7 +198,7 @@ Learnly ships with **15 lessons** across 3 subjects — 5 per subject:
 | 4   | Simple Addition | ⭐⭐       |
 | 5   | Patterns        | ⭐⭐       |
 
-### 📖 English
+### English
 
 | #   | Lesson         | Difficulty |
 | --- | -------------- | ---------- |
@@ -208,7 +208,7 @@ Learnly ships with **15 lessons** across 3 subjects — 5 per subject:
 | 4   | First Words    | ⭐⭐       |
 | 5   | Rhyming Words  | ⭐⭐       |
 
-### 🔬 Science
+### Science
 
 | #   | Lesson            | Difficulty |
 | --- | ----------------- | ---------- |
@@ -241,7 +241,7 @@ Learnly uses a **neo-brutalist** design language:
 
 ---
 
-## 🗃 Firestore Data Structure
+## Firestore Data Structure
 
 ```
 users/
