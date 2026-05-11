@@ -1,6 +1,6 @@
 # Learnly
 
-> A fun, safe, and interactive learning world built for little minds aged 3–6.
+> A fun, safe, and interactive learning world built for little minds aged 3–7.
 
 ![Learnly Banner](https://img.shields.io/badge/Learnly-Preschool%20Learning%20App-4D96FF?style=for-the-badge&logo=react)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
